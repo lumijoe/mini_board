@@ -5,5 +5,14 @@
     -data_item.ejs(テーブル表示のパーシャル用テンプレート)
     -mydata.txt(データ保管先テキストファイル)
 
-## index.ejsテンプレートの作成
-    
+## npm run devを有効にするためのnpm install(package.jsonの作成)
+    -package.jsonが生成されずpackage-lock.jsonのみ生成された場合
+        -npm init -yでpackage.jsonを生成する
+        -package.jsonに
+            "scripts": {
+                "dev": "next dev"
+            },がなければ追記する
+
+## .gitignoreを作成
+
+## npm installでnode_modulesを生成し、.gitignoreに追記する

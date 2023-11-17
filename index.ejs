@@ -1,0 +1,33 @@
+<!-- index.ejs(メッセージボード表示ページのテンプレート) -->
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta http-equiv="content-type"
+        content="text/html"; charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>ミニメッセージボード</title>
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <script>
+        function init() {
+            var id = localStorage.getItem('id');
+            // id未入力、ログイン画面に遷移
+            if (id == null) {
+                location.href = './login';
+            }
+            document.querySelector('#id').textContent = 'ID:' + id;
+            document.querySelector('#id_input').value = id;
+        }
+    </script>
+</head>
+
+<body class="container" onload="init();">
+    <header>
+        <h1 class="display-4">メッセージボード</h1>
+    </header>
+    
+</body>
+</html>
