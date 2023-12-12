@@ -1,3 +1,5 @@
+## node app.jsで起動、http://localhost:3004/
+
 ## 必要ファイルの洗い出し
     -app.js(メインプログラムファイル)
     -index.ejs(メッセージボードの表示ページのテンプレート)
@@ -25,7 +27,7 @@
                 "dev": "node app.js"
             },と、初期段階で表示させたいapp.jsで設定する（エントリーポイント）
         -エントリーポイントファイルを変更する場合はmainとscriptを適宜変更
-        
+
 ## .gitignoreを作成
 
 ## npm installでnode_modulesを生成し、.gitignoreに追記する
