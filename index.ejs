@@ -11,6 +11,7 @@
     <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         crossorigin="anonymous">
+
     <script>
         function init() {
             var id = localStorage.getItem('id');
@@ -28,6 +29,12 @@
     <header>
         <h1 class="display-4">メッセージボード</h1>
     </header>
-    
+    <div role="main">
+        <p>※メッセージは最大10個まで保管されます。</p>
+        <form method="post" action="/">
+            <p id =id></p>
+        </form>
+
+    </div>    
 </body>
 </html>

@@ -5,14 +5,27 @@
     -data_item.ejs(テーブル表示のパーシャル用テンプレート)
     -mydata.txt(データ保管先テキストファイル)
 
+## app.jsでlocalserver3004の設定（画面表示確認）
+    // app.js
+    const http = require('http');
+    const server = http.createServer(
+        (req, res) => {
+            res.end('Node.js test');
+        }
+    );
+    server.listen(3004)
+    console.log('Server start!');
+
 ## npm run devを有効にするためのnpm install(package.jsonの作成)
     -package.jsonが生成されずpackage-lock.jsonのみ生成された場合
         -npm init -yでpackage.jsonを生成する
-        -package.jsonに
+        -package.json
+            "main": app.js
             "scripts": {
-                "dev": "next dev"
-            },がなければ追記する
-
+                "dev": "node app.js"
+            },と、初期段階で表示させたいapp.jsで設定する（エントリーポイント）
+        -エントリーポイントファイルを変更する場合はmainとscriptを適宜変更
+        
 ## .gitignoreを作成
 
 ## npm installでnode_modulesを生成し、.gitignoreに追記する
