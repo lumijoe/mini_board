@@ -31,3 +31,5 @@
 ## .gitignoreを作成
 
 ## npm installでnode_modulesを生成し、.gitignoreに追記する
+
+## 1213(p160−45％まで)
