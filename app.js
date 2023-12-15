@@ -101,7 +101,7 @@ function addToData(id, msg, fname, request) {
     if (message_data.length > max_num) {
         message_data.pop();
     }
-    saveToFIle(fname);
+    saveToFile(fname);
 }
 
 // データを保存
