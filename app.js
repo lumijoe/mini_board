@@ -86,6 +86,28 @@ function write_index(request, response) {
 }
 
 // テキストファイルをロード
+function readFromFile(fname) {
+    fs.readFile(fname, 'utf8', (err, data) => {
+        message_data = data.split('\n');
+    })
+}
 
+// データを更新
+function addToData(id, msg, fname, request) {
+    var obj = { 'id':id, 'msg':msg };
+    var obj_str = JSON.stringify(obj);
+    console.log('add data: ' + obj_str);
+    message_data.unshift(obj_str);
+    if (message_data.length > max_num) {
+        message_data.pop();
+    }
+    saveToFIle(fname);
+}
 
-
+// データを保存
+function saveToFile(fname) {
+    var data_str = message_data.join('\n');
+    fs.writeFile( fname, data_str, (err) => {
+        if (err) { throw err; }
+    });
+}
