@@ -32,8 +32,4 @@
 
 ## npm installでnode_modulesを生成し、.gitignoreに追記する
 
-## 1215(p162まで)
-    data_itemでバグ。
-    1218デバッグから。
 
-## 1216(デバッグ続き、コード再確認)
