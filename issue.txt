@@ -1,4 +1,4 @@
-## node app.jsで起動、http://localhost:3004/
+## 起動方法：node app.jsで起動、http://localhost:3004/
 
 ## 必要ファイルの洗い出し
     -app.js(メインプログラムファイル)
@@ -32,4 +32,31 @@
 
 ## npm installでnode_modulesを生成し、.gitignoreに追記する
 
+## 1215,1218のデバッグ修正（教科書からの修正で解決）
+    原因：テキストファイルロードのコールバックができていなかった
+    file:app.js
+    /* function readFromFile(fname) {
+    fs.readFile(fname, 'utf8', (err, data) => {
+         message_data = data.split('\n');
+    })
+    }*/
+    
+    修正後コード：コールバックの実行
+    /*
+    function readFromFile(fname, callback) {
+    fs.readFile(fname, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return;
+        }
+
+        message_data = data.split('\n');
+        callback(); // コールバックの実行
+    });
+    }
+    */
+
+## p163以降の入力動作確認で、ログインネームの入力はOKだが、メッセージ送信がNG
+    - ログイン入力
+    - 送信メッセージの表示など
 
