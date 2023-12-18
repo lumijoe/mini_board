@@ -1,5 +1,5 @@
 <!-- index.ejs(メッセージボード表示ページのテンプレート) -->
-<!-- list3-17(p152)1212 -->
+<!-- list3-17(p152)1212,1218 -->
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -8,7 +8,8 @@
     <meta http-equiv="content-type"
         content="text/html"; charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <title>ミニメッセージボード</title>
+    <!-- <title>ミニメッセージボード</title> -->
+    <title><%= title %></title>
     <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         crossorigin="anonymous">
@@ -28,7 +29,9 @@
 
 <body class="container" onload="init();">
     <header>
-        <h1 class="display-4">メッセージボード</h1>
+        <!-- <h1 class="display-4">メッセージボード</h1> -->
+        <h1 class="display-4"><%= title %></h1>
+
     </header>
     <div role="main">
         <p>※メッセージは最大10個まで保管されます。</p>
