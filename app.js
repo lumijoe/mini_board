@@ -87,11 +87,24 @@ function write_index(request, response) {
 }
 
 // テキストファイルをロード
-function readFromFile(fname) {
+/* function readFromFile(fname) {
     fs.readFile(fname, 'utf8', (err, data) => {
-        message_data = data.split('\n');
+         message_data = data.split('\n');
     })
+}*/
+function readFromFile(fname, callback) {
+    fs.readFile(fname, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return;
+        }
+
+        message_data = data.split('\n');
+        callback(); // コールバックの実行
+    });
 }
+
+
 
 // データを更新
 function addToData(id, msg, fname, request) {
