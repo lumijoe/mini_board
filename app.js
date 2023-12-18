@@ -1,5 +1,6 @@
 // app.js
 // list3-20(p161)1215
+// 再確認
 
 const http = require('http');
 const fs = require('fs') 
@@ -111,3 +112,42 @@ function saveToFile(fname) {
         if (err) { throw err; }
     });
 }
+
+
+// デバッグ確認
+/*
+val: ## (p158)1213
+/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:361
+  throw err;
+  ^
+
+SyntaxError: data_item:46
+    44|         <table class="table">
+    45|             <% for(var i in data) { %>
+ >> 46|             <%- include('data_item', {val:data[i]}) %>
+    47|             <% } %>
+    48|             </table>
+    49|     </div>    
+
+/Users/lumi/Desktop/mini_board/data_item.ejs:6
+    4| <% if(val != ''){ %>
+    5|     <% console.log('val:', val); %>
+ >> 6|     <% var obj = JSON.parse(val); %>
+    7|     <tr>
+    8|         <th><%= obj.id %></th>
+    9|         <td><%= obj.msg %></td>
+
+Unexpected token # in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at eval ("/Users/lumi/Desktop/mini_board/data_item.ejs":18:23)
+    at data_item (/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:703:17)
+    at include (/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:701:39)
+    at eval ("data_item":15:17)
+    at data_item (/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:703:17)
+    at exports.render (/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:425:37)
+    at write_index (/Users/lumi/Desktop/mini_board/app.js:77:23)
+    at response_index (/Users/lumi/Desktop/mini_board/app.js:70:9)
+    at Server.getFromClient (/Users/lumi/Desktop/mini_board/app.js:30:13) {
+  path: 'data_item'
+}
+*/
