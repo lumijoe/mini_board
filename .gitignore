@@ -1,2 +1,5 @@
+# node_modules　フォルダごと
 node_modules/
+
+#.npmrcファイル
 .npmrc
