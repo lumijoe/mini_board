@@ -127,3 +127,9 @@ function saveToFile(fname) {
         if (err) { throw err; }
     });
 }
+
+// ログアウトの処理
+function logout() {
+   
+    location.href = 'login';       // ログインページにリダイレクト
+}
