@@ -18,8 +18,9 @@ readFromFile(filename);
 
 var server = http.createServer(getFromClient);
 
-server.listen(3004);
-console.log('Server start!');
+server.listen(process.env.PORT || 3004, () => {
+    console.log('Server start!');
+});  
 // ここまでメインプログラム==========
 
 // createServerの処理
