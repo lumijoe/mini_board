@@ -41,14 +41,15 @@
     </header>
     <div role="main">
         <p>※メッセージは最大10個まで保管されます。</p>
+        <!-- action先にpostする（action先の設定） -->
         <form method="post" action="/">
             <p id =id></p>
             <input type="hidden" id="id_input" name="id">
             <div class="form-group" style="margin-bottom: 30px;">
                 <label for="msg">Message</label>
                 <input type="text" name="msg" id="msg" class="form-control">
+                <input type="submit" value="送信" class="btn btn-primary" style="margin-bottom: 70px;">
             </div>
-            <input type="submit" value="送信" class="btn btn-primary" style="margin-bottom: 70px;">
         </form>
         <table class="table">
             <% for(var i in data) { %>
