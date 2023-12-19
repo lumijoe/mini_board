@@ -1,4 +1,13 @@
 ## 起動方法：node app.jsで起動、http://localhost:3004/
+## 動的サイトのホスティング：Render.comを使用 https://dashboard.render.com/web/srv-cm0mvj21hbls73dcorfg
+- .npmrcファイルの作成
+- app.jsでローカルサーバ−3004番設定(テスト環境)とホスティングサービス設定(デプロイ環境)の２つを設定
+- package.jsonの内容を確認（"main": "app.js"であること。scriptのbuildは無くてもOK。）
+- Render.comサイト側の設定
+    - buildコマンドはデフォルト設定されているyarnで大丈夫（npmでは走らない）
+    - startコマンドはnode app.js(package.jsonのmainに合わせる)
+    - あとはデフォルト入力のままでOK
+
 
 ## 必要ファイルの洗い出し
     -app.js(メインプログラムファイル)
