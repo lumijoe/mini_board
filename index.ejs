@@ -15,6 +15,12 @@
         crossorigin="anonymous">
 
     <script>
+        // ログアウトの処理
+        function logout() {
+        
+        window.location.href = 'login';       // ログインページにリダイレクト
+        }
+
         function init() {
             var id = localStorage.getItem('id');
             // id未入力、ログイン画面に遷移
@@ -51,6 +57,6 @@
         </table>
     </div>
     <!-- ログアウトボタンの追加 -->
-    <button onclick="logout();" class="btn btn-warning">ログアウト</button>    
+    <button type="button" onclick="logout();" class="btn btn-warning">ログアウト</button>    
 </body>
 </html>
