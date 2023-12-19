@@ -1,6 +1,6 @@
 // app.js
 // list3-20(p161)1215
-// 再確認
+// 再確認1218,1219
 
 const http = require('http');
 const fs = require('fs') 
@@ -50,7 +50,6 @@ function response_login(request, response) {
     response.end();
 }
 
-
 // テキストファイルをロード
 function readFromFile(fname, callback) {
     fs.readFile(fname, 'utf8', (err, data) => {
@@ -65,8 +64,6 @@ function readFromFile(fname, callback) {
         }
     });
 }
-
-
 
 // indexのアクセス処理
 function response_index(request, response) {
@@ -111,10 +108,6 @@ function write_index(request, response) {
     response.end();
 }
 
-
-
-
-
 // データを更新
 function addToData(id, msg, fname, request) {
     var obj = { 'id':id, 'msg':msg };
@@ -134,4 +127,3 @@ function saveToFile(fname) {
         if (err) { throw err; }
     });
 }
-
