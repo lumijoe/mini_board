@@ -50,12 +50,30 @@ function response_login(request, response) {
     response.end();
 }
 
+
+// テキストファイルをロード
+function readFromFile(fname, callback) {
+    fs.readFile(fname, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return;
+        }
+
+        message_data = data.split('\n');
+        if (callback && typeof callback === 'function') {
+            callback();
+        }
+    });
+}
+
+
+
 // indexのアクセス処理
 function response_index(request, response) {
     // POSTアクセス時の処理
     if (request.method == 'POST') {
         var body = '';
-    
+
         // データ受信のイベント処理
         request.on('data', function (data) {
             body += data;
@@ -65,10 +83,17 @@ function response_index(request, response) {
         request.on('end', function () {
             data = qs.parse(body);
             addToData(data.id, data.msg, filename, request);
-            write_index(request, response);
+
+            // コールバック関数を追加
+            readFromFile(filename, function() {
+                write_index(request, response);
+            });
         });
     } else {
-        write_index(request, response);
+        // コールバック関数を追加
+        readFromFile(filename, function() {
+            write_index(request, response);
+        });
     }
 }
 
@@ -86,23 +111,7 @@ function write_index(request, response) {
     response.end();
 }
 
-// テキストファイルをロード
-/* function readFromFile(fname) {
-    fs.readFile(fname, 'utf8', (err, data) => {
-         message_data = data.split('\n');
-    })
-}*/
-function readFromFile(fname, callback) {
-    fs.readFile(fname, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading file:', err);
-            return;
-        }
 
-        message_data = data.split('\n');
-        callback(); // コールバックの実行
-    });
-}
 
 
 
@@ -126,41 +135,3 @@ function saveToFile(fname) {
     });
 }
 
-
-// デバッグ確認
-/*
-val: ## (p158)1213
-/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:361
-  throw err;
-  ^
-
-SyntaxError: data_item:46
-    44|         <table class="table">
-    45|             <% for(var i in data) { %>
- >> 46|             <%- include('data_item', {val:data[i]}) %>
-    47|             <% } %>
-    48|             </table>
-    49|     </div>    
-
-/Users/lumi/Desktop/mini_board/data_item.ejs:6
-    4| <% if(val != ''){ %>
-    5|     <% console.log('val:', val); %>
- >> 6|     <% var obj = JSON.parse(val); %>
-    7|     <tr>
-    8|         <th><%= obj.id %></th>
-    9|         <td><%= obj.msg %></td>
-
-Unexpected token # in JSON at position 0
-    at JSON.parse (<anonymous>)
-    at eval ("/Users/lumi/Desktop/mini_board/data_item.ejs":18:23)
-    at data_item (/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:703:17)
-    at include (/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:701:39)
-    at eval ("data_item":15:17)
-    at data_item (/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:703:17)
-    at exports.render (/Users/lumi/Desktop/mini_board/node_modules/ejs/lib/ejs.js:425:37)
-    at write_index (/Users/lumi/Desktop/mini_board/app.js:77:23)
-    at response_index (/Users/lumi/Desktop/mini_board/app.js:70:9)
-    at Server.getFromClient (/Users/lumi/Desktop/mini_board/app.js:30:13) {
-  path: 'data_item'
-}
-*/
