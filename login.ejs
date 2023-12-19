@@ -20,16 +20,6 @@
             localStorage.setItem('id', id);
             location.href = '/';
         }
-
-        function init() {
-            // ここに init 関数のコードを追加
-            var id = localStorage.getItem('id');
-            // id未入力、ログイン画面に遷移
-            if (id == null) {
-                location.href = './login';
-            }
-            document.querySelector('#id_input').value = id;
-        }
     </script>
 </head>
 
